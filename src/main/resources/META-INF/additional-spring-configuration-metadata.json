@@ -1,0 +1,32 @@
+{"properties": [
+  {
+    "name": "spring.password",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.password'"
+  },
+  {
+    "name": "spring.driver-class-name",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.driver-class-name'"
+  },
+  {
+    "name": "spring.url",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.url'"
+  },
+  {
+    "name": "spring.username",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.username'"
+  },
+  {
+    "name": "jpa.show-sql",
+    "type": "java.lang.String",
+    "description": "A description for 'jpa.show-sql'"
+  },
+  {
+    "name": "jpa.properties.hibernate.format_sql",
+    "type": "java.lang.String",
+    "description": "A description for 'jpa.properties.hibernate.format_sql'"
+  }
+]}
