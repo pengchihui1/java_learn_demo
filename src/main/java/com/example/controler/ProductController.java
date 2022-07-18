@@ -1,10 +1,9 @@
-package com.example.controller;
+package com.example.controler;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,8 +13,9 @@ import com.example.model.Product;
 
 @RestController
 @RequestMapping("product")
-@Component
+//@Component
 public class ProductController {
+
 	@Autowired(required = false)
 	private ProductRepository productRepository;
 
