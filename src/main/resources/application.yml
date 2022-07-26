@@ -12,10 +12,23 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     password: 
     username: root
-    thymeleaf:
+   thymeleaf:
     cache: false
-    main:      
-      web-application-type: none	   
+    mode: HTML
+    encoding: UTF-8
+    prefix: classpath:/templates/ #视图解析器的前缀放在这个文件夹
+    suffix: .html #后缀
+    enabled: false
+   web:
+     resources:
+       static-locations: file:src/main/java/resources/static/
+       cache:
+        period: 0
+   autoconfigure:
+    exclude: org.springframework.boot.autoconfigure.web.servlet.error.ErrorMvcAutoConfiguration
+    
+#   main:      
+#      web-application-type: none     
 #热部署生效
 spring.devtools.restart.enabled: true
 #设置重启的目录
@@ -26,6 +39,8 @@ spring.devtools.restart.enabled: true
 server:
   port: 8082
   error: 
+   whitelabel:
+     enabled: false
    include-exception: true
    include-stacktrace: always
 

@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.example.model.Product;
+import com.example.entity.Product;
 
 //Dao层主要用来实现对数据库的增、删、查、改。 dao只要继承JpaRepository类就可以，几乎可以不用写方法，
 //可以根据方法名来自动的生产SQL，比如findByProductName 会自动生产一个以 ProductName 为参数的查询方法

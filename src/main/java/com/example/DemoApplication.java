@@ -11,7 +11,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 import com.example.dao.ProductRepository;
-import com.example.model.Product;
+import com.example.entity.Product;
 
 /**
  * 表示取消数据源的自动配置
@@ -21,7 +21,7 @@ import com.example.model.Product;
 //@SpringBootApplication(exclude = { DataSourceAutoConfiguration.class })
 @SpringBootApplication
 @ComponentScan({ "com.example" })
-@EntityScan(basePackages = "com.example.model")
+@EntityScan(basePackages = "com.example.entity")
 @EnableJpaRepositories(basePackages = "com.example.dao") // 启用自动配置魔法
 public class DemoApplication implements CommandLineRunner {
 

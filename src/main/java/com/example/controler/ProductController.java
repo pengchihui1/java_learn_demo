@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.dao.ProductRepository;
-import com.example.model.Product;
+import com.example.entity.Product;
 
 @RestController
 @RequestMapping("product")
