@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+
+<html>
+<head >
+    <link href="/content/public/images/logo-small.png" rel="shortcut icon" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>${status}</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <style>
+        body {
+            position: fixed;
+            z-index: 10;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            width: 100%;
+            padding: 0;
+            margin: 0px;
+            font-size: 14px;
+            background: #fff;
+            word-wrap: break-word;
+        }
+
+        p {
+            padding: 0 15px;
+        }
+
+        .btn {
+            border: 0px;
+            color: #fff;
+            cursor: pointer;
+            text-align: center;
+            background-color: #ff7a5f\0;
+            box-shadow: #cccccc 0 2px 15px 0;
+            -webkit-box-shadow: 0 2px 7px 0 rgba(0,0,0,0.2);
+            background: radial-gradient(circle at 300% 50%, rgb(255, 195, 114) 50%, rgb(255, 105, 90) 100%);
+            transition: all .2s ease-out,box-shadow .2s ease-out;
+        }
+
+        .btn:hover {
+            color: #FFFFFF;
+            transform: scale(1.1);
+        }
+
+        .btn:focus {
+            outline: none;
+        }
+
+        .container {
+            margin: 8% auto;
+        }
+
+        .container p {
+            margin: 35px auto;
+            text-align: center;
+        }
+
+        .container img {
+            width: 20%;
+        }
+
+        .container .font {
+            color: #848484;
+        }
+
+        .container .btn-back {
+            width: 180px;
+            height: 35px;
+            border-radius: 6px;
+        }
+
+        #container-info {
+            display: none;
+            position: fixed;
+            z-index: 11;
+            top: 5%;
+            left: 0;
+            right: 0;
+            margin: 0 auto;
+            width: 65%;
+            height: 85%;
+            overflow: hidden;
+            border-radius: 4px;
+            border: 1px solid #f1986e;
+            background-color: #fff;
+            box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgb(242, 154, 110);
+        }
+
+        #container-info .btn-close {
+            position: absolute;
+            right: 5px;
+            top: 5px;
+            width: 25px;
+            height: 25px;
+            line-height: 25px;
+            font-size: 22px;
+            padding: 2px;
+            border-radius: 50%;
+            text-align: center;
+        }
+
+        #container-info p {
+            font-size: 12px;
+            line-height: 20px;
+        }
+
+        .show {
+            display: block !important;
+        }
+
+        .cor-r {
+            color: red;
+        }
+
+        @media (max-width: 767px) {
+            .container img {
+                width: 50%;
+            }
+            #container-info {
+                width: 85%;
+            }
+        }
+
+        .panel-heading {
+            height: 32px;
+            line-height: 32px;
+            padding: 5px 15px;
+        }
+        .panel-body {
+            height: calc(85vh - 40px);
+            overflow: auto;
+        }
+        .panel-orange .panel-heading {
+            background-color: #ffa0681f;
+            color: #ff6f5c;
+        }
+    </style>
+</head>
+<body>
+<form id="form1" >
+    <div class="container">
+        <p><img src="/content/public/images/error_${status}.png"/></p>
+        <p class="font">${error}，<a onclick="errorDetail(true)" href="javascript: void(0)">点击查看明细</a>!</p>
+        <p><button type="button" class="btn btn-back" id="btnBack" >返回</button></p>
+    </div>
+    <div id="container-info">
+        <span class="btn btn-close" onclick="errorDetail(false)">×</span>
+        <div class="panel panel-orange">
+            <div class="panel-heading">
+                错误说明
+            </div>
+            <div class="panel-body">
+                <#if path??>
+                    <p><b>请求的URL：</b>${path}</p>
+                </#if>
+                <#if message??>
+                    <p><b>异常信息：</b><span class="cor-r">${message}</span></p>
+                </#if>
+                <#if trace??>
+                    <p><b>StackTrace：</b><br>${trace}</p>
+                </#if>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        window.onload = function () {
+            var btn = document.getElementById("btnBack");
+            btn.onclick = function () {
+                var url = document.referrer;
+                if (url.indexOf("home/main") > 0) {
+                    window.parent.tabDelete();
+                    return;
+                }
+                window.history.back(-1);
+            }
+        }
+        function errorDetail(isShow) {
+            var con = document.getElementById("container-info");
+            con.className = isShow ? "show" : ""; // 兼容IE8
+        }
+    </script>
+</form>
+</body>
+</html>
